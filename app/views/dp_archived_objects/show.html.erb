@@ -1,0 +1,19 @@
+<h1>List of Barcodes to Retrieve</h1>
+<% if @data.present? %>
+  <!-- <%= @data %> -->
+  <table class="table table-hover table-condensed">
+    <!-- <tr><td><%= @step %></td></tr> -->
+    <tr>
+      <th>BARCODE</th>
+    </tr>
+    <% data_uniq = @data[:barcodes].uniq %>
+    <% data_uniq.sort!.each do |data| %>
+      <tr>
+        <td><%= data %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>There are no barcodes selected.</p>
+<% end %>
+<%= link_to '<< Back to Results', :back, class: "btn btn-primary" %>

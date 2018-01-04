@@ -1,0 +1,13 @@
+<footer class="footer">
+  <small>
+    <a href="http://10.102.129.110/index.php">MX Home</a>
+    <a href="http://10.103.0.244/">DIVA Director</a>
+    Session ID:= <%= session[:current_session_code] if !session[:current_session_code].nil? %>
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "About",   about_path %></li>
+      <li><%= link_to "Contact", contact_path %></li>
+    </ul>
+  </nav>
+</footer>

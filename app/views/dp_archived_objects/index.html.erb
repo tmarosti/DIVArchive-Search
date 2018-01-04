@@ -1,0 +1,43 @@
+<h1>DIVA Archived Objects</h1>
+<p>Please enter a search term:</p>
+<%= form_tag(browse_path, :method => "get", class: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by file name...", class: "form-control" %>
+<% end %>
+<p></p>
+<% if @data.present? %>
+  <%= form_tag(list_path, :method => "get") do %>
+    <table id="example" class="table table-hover table-condensed">
+      <!-- <tr><td><%= @step %></td></tr> -->
+      <thead>
+        <tr>
+          <th></th>
+          <th>NAME</th>
+          <th>CATEGORY</th>
+          <th>BARCODE</th>
+          <th>ONLINE?</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @data.each do |data| %>
+        <% if data.ta_is_online == "N" %>
+          <tr class="danger">
+            <td><%= check_box_tag :barcodes, data.ta_barcode, true, name:'post[barcodes][]' %></td>
+        <% else %>
+          <tr>
+            <td><%= check_box_tag :barcodes, data.ta_barcode, false, name:'post[barcodes][]' %></td>
+        <% end %>
+            <td><%= data.ao_object_name %></td>
+            <td><%= data.ao_category %></td>
+            <td><%= data.ta_barcode %></td>
+            <td><%= data.ta_is_online %></td>
+          </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <p><%= submit_tag "Print Retrieve List", id: "print", class: "btn btn-primary" %></p>
+  <% end %>
+<% else %>
+  <% if params[:search].present? %>
+    <p>There are no files containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
+<% end %>

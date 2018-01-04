@@ -1,0 +1,17 @@
+<table>
+  <tr><td><%= @step %></td></tr>
+  <tr>
+    <th>TE_OBJECT_NAME</th>
+    <th>TE_CATEGORY</th>
+    <th>TA_BARCODE</th>
+    <th>ONLINE?</th>
+  </tr>
+  <% @data.each do |data| %>
+  <tr>
+    <td><%= data.te_object_name %></td>
+    <td><%= data.te_category %></td>
+    <td><%= data.ta_barcode %></td>
+    <td><%= data.ta_is_online %></td>
+  </tr>
+  <% end %>
+</table>

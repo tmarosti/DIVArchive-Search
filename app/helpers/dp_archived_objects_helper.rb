@@ -1,0 +1,2 @@
+module DpArchivedObjectsHelper
+end

@@ -1,0 +1,2 @@
+class DpObjectInstancesController < ApplicationController
+end
